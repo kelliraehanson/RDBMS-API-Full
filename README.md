@@ -1,4 +1,4 @@
-# Building an API using a Relational Database hi
+# Building an API using a Relational Database 
 
 ## Topics
 
