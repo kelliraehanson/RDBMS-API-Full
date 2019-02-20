@@ -6,7 +6,8 @@ module.exports = {
     client: 'sqlite3',
     connection: {
       filename: './database/lambda.sqlite3'
-    }
+    },
+    useNullAsDefault: true, // needed for sqlite
   },
 
   // staging: {

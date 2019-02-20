@@ -22,5 +22,32 @@ server.get('/api/cohorts', (req, res) => {
 		});
 });
 
+server.get('/api/cohorts/:id', (req, res) => {
+	const uniqueCohort = req.params.id;
+	db.from('cohorts')
+		.where({ id: uniqueCohort })
+		.then(cohort => {
+			res.status(200).json(cohort);
+		})
+		.catch(err => {
+			res.status(500).json(err);
+		});
+});
+
+//POST
+
+server.post('/api/cohorts', (req, res) => {
+	const cohort = req.body;
+	db('cohorts')
+		.insert(cohort)
+		.then(ids => {
+			res.status(201).json(ids);
+		})
+		.catch(err => {
+			res.status(500).json(err);
+		});
+});
+
+
 const port = process.env.PORT || 4000;
 server.listen(port, () => console.log(`\nrunning on ${port}\n`));
